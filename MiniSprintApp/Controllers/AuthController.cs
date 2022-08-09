@@ -32,7 +32,7 @@ namespace MiniSprintApp.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(UserDto request)
+        public async Task<ActionResult<User>> Login(UserDto request)
         {
             if(user.Username != request.UserName)
             {
@@ -45,8 +45,9 @@ namespace MiniSprintApp.Controllers
             }
 
             string token = CreateToken(user);
+            user.Token = token;
 
-            return Ok(token);
+            return Ok(user);
         }
 
         private string CreateToken(User user)
