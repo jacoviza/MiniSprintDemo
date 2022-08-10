@@ -59,9 +59,28 @@
     <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\users.sql" />
+    <Build Include="Tables\Users.sql" />
+    <Build Include="Tables\Orders.sql" />
+    <Build Include="Tables\Customers.sql" />
+    <Build Include="Tables\OrderItems.sql" />
+    <Build Include="Tables\Orders_OrderItems.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MiniSprintSchema.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MiniSprintSchema.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Script.PreDeployment.sql" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent>:r .\Script.PreDeployment.sql</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>:r .\Script.PostDeployment.sql</PostBuildEvent>
+  </PropertyGroup>
 </Project>
